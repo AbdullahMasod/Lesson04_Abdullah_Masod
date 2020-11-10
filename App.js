@@ -38,9 +38,28 @@ class Eats extends React.Component {
           {this.props.name}{'\n'}
           {this.props.location};
         </Text>
-    )
+    );
+  };
+};
+
+class Clock extends React.Component {
+  render() {
+    let location = this.props.name;
+    var time = moment().tz(location).format('HH mm Z');
+    return <Text>{location} - {time}</Text>;
   }
 }
+
+const WorldClock = () => {
+  return (
+      <View>
+        <Clock name="Asia/Singapore" />
+        <Clock name="Europe/London" />
+        <Clock name="America/New_York" />
+        <Clock name="Europe/Oslo" />
+      </View>
+  );
+};
 
 const SemModule = (props) => {
   return (
@@ -80,7 +99,8 @@ const App: () => React$Node = () => {
               <SemModule day="Thursday" modCode="C348" />
 
               <Eats name="Crowded Bowl" location="W4/W6 lawn Canteen" />
-              
+
+              <WorldClock />
 
             </View>
           </View>
